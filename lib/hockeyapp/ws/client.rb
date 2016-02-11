@@ -68,6 +68,12 @@ module HockeyApp
       raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
       App.from_hash(resp, self)
     end
+    
+    def new_app(title, bundle_identifier, platform)
+      resp = ws.create_new_app(title, bundle_identifier, platform)
+      raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
+      App.from_hash(resp, self)
+    end
 
 
 
