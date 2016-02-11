@@ -107,7 +107,7 @@ module HockeyApp
       params = {
           :title => title,
           :bundle_identifier => bundle_id,
-          :platfirm => platform
+          :platform => platform
       }
       self.class.post "/apps/new", :body => params
     end
