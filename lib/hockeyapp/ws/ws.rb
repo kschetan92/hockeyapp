@@ -100,7 +100,7 @@ module HockeyApp
           :notify => notify,
           :status => status
       }
-      self.class.post "/apps", :body => params
+      self.class.post "/apps/upload", :body => params
     end
     
     def create_new_app(title, bundle_id, platform)
