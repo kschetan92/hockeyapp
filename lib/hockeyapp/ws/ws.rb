@@ -92,7 +92,7 @@ module HockeyApp
         notes="New app",
         notes_type=App::NOTES_TYPES_TO_SYM.invert[:textile],
         notify=App::NOTIFY_TO_BOOL.invert[false],
-        status=App::STATUS_TO_SYM.invert[:deny])
+        status=App::STATUS_TO_SYM.invert[:allow])
       params = {
           :ipa => file_ipa,
           :notes => notes,
