@@ -103,11 +103,11 @@ module HockeyApp
       self.class.post "/apps/upload", :body => params
     end
     
-    def create_new_app(title, bundle_id, platform)
+    def create_new_app(options = {})
       params = {
-          :title => title,
-          :bundle_identifier => bundle_id,
-          :platform => platform
+          :title => options[:title],
+          :bundle_identifier => options[:bundle_id],
+          :platform => options[:platform]
       }
       self.class.post "/apps/new", :body => params
     end
