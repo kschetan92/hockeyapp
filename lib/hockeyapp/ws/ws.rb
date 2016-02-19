@@ -108,8 +108,7 @@ module HockeyApp
           :title => options[:title],
           :bundle_identifier => options[:bundle_id],
           :platform => options[:platform],
-          :custom_release_type => options[:custom_release_type],
-          :private => options[:private]
+          :custom_release_type => options[:custom_release_type]
       }
       self.class.post "/apps/new", :body => params
     end
