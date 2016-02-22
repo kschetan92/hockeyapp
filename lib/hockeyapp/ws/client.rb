@@ -69,8 +69,8 @@ module HockeyApp
       App.from_hash(resp, self)
     end
     
-    def new_app(options = {})
-      resp = ws.create_new_app(options)
+    def new_app(title, bundle_id, options = {})
+      resp = ws.create_new_app(title, bundle_id, options)
       raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
       App.from_hash(resp, self)
     end
