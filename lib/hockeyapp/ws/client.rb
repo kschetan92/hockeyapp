@@ -70,7 +70,14 @@ module HockeyApp
     end
     
     def new_app(title, bundle_id, options = {})
-      system("pwd")
+      p options
+      path = File.expand_path("app/assets/icon/icon.png")
+      if File.exists?(path)
+        options[:icon] = File.open(path, "rb")
+      else
+        puts "icon.png file not found under app/assets/icon directory"
+      end
+      p options
       resp = ws.create_new_app(title, bundle_id, options)
       raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
       App.from_hash(resp, self)
