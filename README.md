@@ -63,5 +63,11 @@ Parameters:
 
     owner_id - optional, set to the ID of your organization
 
-    example -  
-    options = {:platform => "iOS", :release_type => 1, :custom_release_type => "alpha", :icon => "/path/to/icon", :private => true, :owner_id => "your-Owner/Organization-id"}
+    example - options = {
+                          :platform => "iOS", 
+                          :release_type => 1, 
+                          :custom_release_type => "alpha", 
+                          :icon => "/path/to/icon", 
+                          :private => true, 
+                          :owner_id => "your-Owner/Organization-id"
+                        }
