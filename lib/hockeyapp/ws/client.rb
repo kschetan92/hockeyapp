@@ -75,7 +75,7 @@ module HockeyApp
       accepted_formats = [".png", ".gif", ".jpeg"]
       icon_path = options[:icon]
       if accepted_formats.include? File.extname(icon_path)
-        options[:icon] = File.open(path, "rb")
+        options[:icon] = File.open(icon_path, "rb")
       end
       resp = ws.create_new_app(title, bundle_id, options)
       raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
