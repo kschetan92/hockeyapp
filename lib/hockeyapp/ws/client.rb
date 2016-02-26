@@ -72,14 +72,6 @@ module HockeyApp
     end
     
     def new_app title, bundle_id, options = {}
-      options[:custom_release_type] ||= ""
-      options[:owner_id] ||= ""
-      icon_path = options[:icon] ||= ""
-      unless icon_path == ""
-        accepted_formats = [".png", ".gif", ".jpeg"]
-        raise "Image format with #{File.extname(icon_path)} extension not supported" unless accepted_formats.include? File.extname(icon_path)
-        options[:icon] = File.open(icon_path, "rb")
-      end
       resp = ws.create_new_app(title, bundle_id, options)
       raise resp['errors'].map{|e|e.to_s}.join("\n") unless resp['errors'].nil?
       App.from_hash(resp, self)
