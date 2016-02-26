@@ -108,7 +108,6 @@ module HockeyApp
       options[:release_type] ||= 0
       options[:custom_release_type] ||= ""
       options[:icon] ||= ""
-      options[:private] ||= true
       options[:owner_id] ||= ""
       unless options[:icon] == ""
         icon_path = options[:icon]
