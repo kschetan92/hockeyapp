@@ -109,8 +109,8 @@ module HockeyApp
         accepted_formats = [".png", ".gif", ".jpeg"]
         raise "Image format with #{File.extname(icon_path)} extension not supported" unless accepted_formats.include? File.extname(icon_path)
         options[:icon] = File.open(icon_path, "rb")
-        options.merge(:icon => options[:icon])
       end
+      options.merge(:title => title, :bundle_identifier => bundle_id, :icon => options[:icon])
       self.class.post "/apps/new", :body => options
     end
   end
