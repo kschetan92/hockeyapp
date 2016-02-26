@@ -118,13 +118,13 @@ module HockeyApp
       params = {
           :title => title,
           :bundle_identifier => bundle_id,
-          :platform => options[:platform],
-          :release_type => options[:release_type],
+          :platform => options[:platform] if ["iOS", "Android", "Mac OS", "Windows Phone", "Custom"].include? options[:platform],
+          :release_type => options[:release_type] if [0, 1, 2, 3].include? options[:platform],
           :custom_release_type => options[:custom_release_type],
           :icon => options[:icon],
-          :private => options[:private] if [true, false].include? options[:private],
           :owner_id => options[:owner_id]
         }
+        params.merge(:private => options[:private]) if [true, false].include? options[:private]
       self.class.post "/apps/new", :body => params
     end
   end
