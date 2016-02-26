@@ -118,8 +118,8 @@ module HockeyApp
       params = {
           :title => title,
           :bundle_identifier => bundle_id,
-          :platform => options[:platform] if ["iOS", "Android", "Mac OS", "Windows Phone", "Custom"].include? options[:platform],
-          :release_type => options[:release_type] if [0, 1, 2, 3].include? options[:platform],
+          :platform => options[:platform],
+          :release_type => options[:release_type],
           :custom_release_type => options[:custom_release_type],
           :icon => options[:icon],
           :owner_id => options[:owner_id]
