@@ -111,6 +111,7 @@ module HockeyApp
         options[:icon] = File.open(icon_path, "rb")
       end
       options.merge(:title => title, :bundle_identifier => bundle_id, :icon => options[:icon])
+      p options
       self.class.post "/apps/new", :body => options
     end
   end
