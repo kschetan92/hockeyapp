@@ -103,29 +103,15 @@ module HockeyApp
       self.class.post "/apps", :body => params
     end
     
-    def create_new_app(title, bundle_id, options = {})
-      options[:platform] ||= "iOS"
-      options[:release_type] ||= 0
-      options[:custom_release_type] ||= ""
-      options[:icon] ||= ""
-      options[:owner_id] ||= ""
-      unless options[:icon] == ""
+    def create_new_app title, bundle_id, options = {}
+      unless options[:icon].nil?
         icon_path = options[:icon]
         accepted_formats = [".png", ".gif", ".jpeg"]
         raise "Image format with #{File.extname(icon_path)} extension not supported" unless accepted_formats.include? File.extname(icon_path)
         options[:icon] = File.open(icon_path, "rb")
+        options.merge(:icon => options[:icon])
       end
-      params = {
-          :title => title,
-          :bundle_identifier => bundle_id,
-          :platform => options[:platform],
-          :release_type => options[:release_type],
-          :custom_release_type => options[:custom_release_type],
-          :icon => options[:icon],
-          :owner_id => options[:owner_id]
-        }
-        params.merge(:private => options[:private]) if [true, false].include? options[:private]
-      self.class.post "/apps/new", :body => params
+      self.class.post "/apps/new", :body => options
     end
   end
 end
