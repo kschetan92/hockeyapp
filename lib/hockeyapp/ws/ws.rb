@@ -108,6 +108,7 @@ module HockeyApp
       options[:release_type] ||= 0
       options[:custom_release_type] ||= ""
       options[:icon] ||= ""
+      options[:private] ||= false
       options[:owner_id] ||= ""
       unless options[:icon] == ""
         icon_path = options[:icon]
@@ -124,9 +125,8 @@ module HockeyApp
           :icon => options[:icon],
           :private => options[:private],
           :owner_id => options[:owner_id]
-      }
+        }
       self.class.post "/apps/new", :body => params
     end
-    
   end
 end
