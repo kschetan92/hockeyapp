@@ -107,11 +107,11 @@ module HockeyApp
       params = {
           :title => title,
           :bundle_identifier => bundle_id,
-          :platform => options[:platform],
-          :release_type => options[:release_type],
+          # :platform => options[:platform],
+          # :release_type => options[:release_type],
           :custom_release_type => options[:custom_release_type],
           :icon => options[:icon],
-          :private => options[:private],
+          # :private => options[:private],
           :owner_id => options[:owner_id]
       }
       self.class.post "/apps/new", :body => params
